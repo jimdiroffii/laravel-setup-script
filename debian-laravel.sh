@@ -59,6 +59,3 @@ curl -sS https://composer.github.io/snapshots.pub -o "$KEY_DIR/keys.dev.pub"
 curl -sS https://composer.github.io/releases.pub -o "$KEY_DIR/keys.tags.pub"
 
 chown -R "$USERNAME":"$USERNAME" "$KEY_DIR"
-
-# echo "\e[47m\e[31mRunning composer diagnostic (verify there are no errors, ignore superuser message)...\e[0m"
-# composer diagnose
