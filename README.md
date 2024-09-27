@@ -17,12 +17,50 @@ This script is not intended to be used in production.
 - Debian 12
 
 ## Installation Overview
+Run the script as `root` or with `sudo`. 
+
+If you run the script logged in as `root`, you'll need to update the Composer keys to your user's home folder or by running `composer self-update --update-keys` as your user.
+
 The script will install the following:
 
 - Prereqs and tools: `git`, `lsb-release`, `ca-certificates`, `curl`, `gnupg2`, `debian-archive-ring`, `tmux`, `vim`, `wget`, `unzip`, `tree`, `net-tools`, `ufw`, `htop`, `rsync`, `jq`
 - Latest (8.3) PHP using [sury.org](https://deb.sury.org/) sources
 - PHP Extensions (some are preinstalled with core PHP, others are manual) - ctype, curl, dom, fileinfo, filter, hash, mbstring, openssl, pcre, pdo, session, tokenizer, xml, zip
 - Composer from [getcomposer.org](https://getcomposer.org/download/)
-- nginx using [nginx.org](https://nginx.org/en/linux_packages.html#Debian) sources
-- 
+- Composer public keys into `~/.config/composer/`
 
+## Post Install
+Run `php -v`.
+Run `composer diagnose` to check for any issues.
+
+Install or clone a laravel app. 
+
+To install a fresh app: 
+
+```bash
+composer create-project laravel/laravel test_example
+```
+
+Change into the `test_example` directory, then test it by running server in the background:
+
+```bash
+php artisan serve --host=0.0.0.0 &
+[1] 29097
+```
+
+The output from `artisan serve` prints a PID that can be used to kill the server. If you miss it or forget it, check using `ps`. Kill the 2nd PID listed.
+
+```bash
+ps -ef | grep server.php
+```
+
+Output:
+```bash
+user    29099   29097  2 19:29 pts/0    00:00:00 /usr/bin/php8.3 -S 0.0.0.0:8000 /srv/test/test_example/vendor/laravel/framework/src/Illuminate/Foundation/Console/../resources/server.php
+user    29101     972  0 19:29 pts/0    00:00:00 grep --color=auto server.php
+```
+
+Kill:
+```bash
+kill 29097
+```
