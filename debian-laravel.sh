@@ -37,6 +37,28 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b3
 sudo php composer-setup.php --install-dir=/usr/local/bin/ --filename=composer
 php -r "unlink('composer-setup.php');"
 
-## TODO: Add curl request for the public keys at the end of the script for manual input into composer
-echo "\e[47m\e[31mRunning composer diagnostic (verify there are no errors, ignore superuser message)...\e[0m"
-composer diagnose
+## Setup Composer keys
+echo "\e[47m\e[31mInstalling composer keys...\e[0m"
+# Determine the non-root username
+if [ "$SUDO_USER" ]; then
+    USERNAME="$SUDO_USER"
+else
+    # Fallback to using logname if SUDO_USER is not set
+    USERNAME=$(logname 2>/dev/null)
+fi
+
+# Create composer key directory
+USER_HOME=$(eval echo "~$USERNAME")
+KEY_DIR="$USER_HOME/.config/composer"
+mkdir -p "$KEY_DIR"
+
+# Download the Dev / Snapshot Public Key
+curl -sS https://composer.github.io/snapshots.pub -o "$KEY_DIR/keys.dev.pub"
+
+# Download the Tags Public Key
+curl -sS https://composer.github.io/releases.pub -o "$KEY_DIR/keys.tags.pub"
+
+chown -R "$USERNAME":"$USERNAME" "$KEY_DIR"
+
+# echo "\e[47m\e[31mRunning composer diagnostic (verify there are no errors, ignore superuser message)...\e[0m"
+# composer diagnose
