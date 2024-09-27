@@ -15,7 +15,7 @@ apt-get update
 apt-get -y upgrade
 
 echo "\e[47m\e[31mInstalling prereqs and tools...\e[0m"
-apt-get -y install git lsb-release ca-certificates curl gnupg2 debian-archive-ring tmux vim wget unzip tree net-tools ufw htop rsync jq openssl
+apt-get -y install git lsb-release ca-certificates curl gnupg2 debian-archive-keyring tmux vim wget unzip tree net-tools ufw htop rsync jq openssl
 
 ## Setup PHP Repo
 echo "\e[47m\e[31mInstall PHP source repository...\e[0m"
