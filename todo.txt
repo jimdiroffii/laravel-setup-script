@@ -1,1 +1,0 @@
-- Add node and npm to installation requirements
