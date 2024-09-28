@@ -64,3 +64,12 @@ curl -sS https://composer.github.io/snapshots.pub -o "$KEY_DIR/keys.dev.pub"
 curl -sS https://composer.github.io/releases.pub -o "$KEY_DIR/keys.tags.pub"
 
 chown -R "$USERNAME":"$USERNAME" "$KEY_DIR"
+
+## Install nvm, node and npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+nvm install 22
+
+## Verify Instllations
+echo "\e[47m\e[31mNode Version Verifications...\e[0m"
+node -v
+npm -v

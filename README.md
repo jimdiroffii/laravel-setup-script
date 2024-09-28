@@ -28,6 +28,7 @@ The script will install the following:
 - PHP Extensions (some are preinstalled with core PHP, others are manual) - ctype, curl, dom, fileinfo, filter, hash, mbstring, openssl, pcre, pdo, session, tokenizer, xml, zip
 - Composer from [getcomposer.org](https://getcomposer.org/download/)
 - Composer public keys into `~/.config/composer/`
+- nvm, nodejs and npm
 
 ## Post Install
 Run `php -v`.
