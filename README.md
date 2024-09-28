@@ -5,7 +5,7 @@ The core idea is to be able to quickly and reliably establish a baseline configu
 
 No extra database will be installed. Laravel comes with a `sqlite` file preinstalled for use. Add a database package and associated PHP extension for other databases.
 
-Several tools will be installed, some as prerequisites for packages such as PHP or Nginx, and others just because they are useful.
+Several tools will be installed, some as prerequisites for packages such as PHP, and others just because they are useful.
 
 You may need to install and setup `sudo` first, along with any other user profile settings, such as SSH keys. 
 
@@ -19,7 +19,7 @@ This script is not intended to be used in production.
 ## Installation Overview
 Run the script as `root` or with `sudo`. 
 
-If you run the script logged in as `root`, you'll need to update the Composer keys to your user's home folder or by running `composer self-update --update-keys` as your user.
+If you run the script logged in as `root`, you'll need to update the Composer keys to your user's home folder or by running `composer self-update --update-keys` as your user. When running with `sudo`, the keys are updated into your user's home folder. 
 
 The script will install the following:
 
@@ -28,7 +28,7 @@ The script will install the following:
 - PHP Extensions (some are preinstalled with core PHP, others are manual) - ctype, curl, dom, fileinfo, filter, hash, mbstring, openssl, pcre, pdo, session, tokenizer, xml, zip
 - Composer from [getcomposer.org](https://getcomposer.org/download/)
 - Composer public keys into `~/.config/composer/`
-- nvm, nodejs and npm
+- nvm, nodejs 22 and npm
 
 ## Post Install
 Run `php -v`.
