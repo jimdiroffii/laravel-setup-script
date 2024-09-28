@@ -25,6 +25,11 @@ sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://pa
 apt-get update
 
 ## Install PHP and Extensions
+# FPM and CLI are installed first to remove Apache dependency
+# Thanks https://askubuntu.com/users/583418/dan-delaney
+# https://askubuntu.com/a/1357414
+echo "\e[47m\e[31mInstalling PHP 8.3 FPM and CLI...\e[0m"
+apt-get -y install php8.3-fpm php8.3-cli
 echo "\e[47m\e[31mInstalling PHP 8.3...\e[0m"
 apt-get -y install php8.3
 echo "\e[47m\e[31mInstalling PHP 8.3 Extensions...\e[0m"
