@@ -65,11 +65,16 @@ curl -sS https://composer.github.io/releases.pub -o "$KEY_DIR/keys.tags.pub"
 
 chown -R "$USERNAME":"$USERNAME" "$KEY_DIR"
 
-## Install nvm, node and npm
+## Install nvm, node, npm as user
+sudo -u $USERNAME bash <<'EOF'
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 nvm install 22
 
-## Verify Instllations
-echo "\e[47m\e[31mNode Version Verifications...\e[0m"
 node -v
 npm -v
+EOF
