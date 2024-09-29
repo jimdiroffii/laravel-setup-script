@@ -33,7 +33,7 @@ apt-get -y install php8.3-fpm php8.3-cli
 echo "\e[47m\e[31mInstalling PHP 8.3...\e[0m"
 apt-get -y install php8.3
 echo "\e[47m\e[31mInstalling PHP 8.3 Extensions...\e[0m"
-apt-get -y install php8.3-cli php8.3-common php8.3-curl php8.3-mbstring php8.3-sqlite3 php8.3-xml php8.3-zip
+apt-get -y install php8.3-common php8.3-curl php8.3-mbstring php8.3-sqlite3 php8.3-xml php8.3-zip
 
 ## Setup Composer
 echo "\e[47m\e[31mInstalling composer...\e[0m"
