@@ -66,6 +66,7 @@ curl -sS https://composer.github.io/releases.pub -o "$KEY_DIR/keys.tags.pub"
 chown -R "$USERNAME":"$USERNAME" "$KEY_DIR"
 
 ## Install nvm, node, npm as user
+echo "\e[47m\e[31mInstalling nvm, node and npm...\e[0m"
 sudo -u $USERNAME bash <<'EOF'
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
