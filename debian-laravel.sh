@@ -28,14 +28,14 @@ apt-get update
 # FPM and CLI are installed first to remove Apache dependency
 # Thanks https://askubuntu.com/users/583418/dan-delaney
 # https://askubuntu.com/a/1357414
-echo "\e[47m\e[31mInstalling PHP 8.3 FPM and CLI...\e[0m"
-apt-get -y install php8.3-fpm php8.3-cli
-echo "\e[47m\e[31mInstalling PHP 8.3...\e[0m"
-apt-get -y install php8.3
-echo "\e[47m\e[31mInstalling PHP 8.3 Extensions...\e[0m"
-apt-get -y install php8.3-cgi php8.3-common php8.3-curl php8.3-mbstring php8.3-sqlite3 php8.3-xml php8.3-zip
+echo "\e[47m\e[31mInstalling PHP 8.4 FPM and CLI...\e[0m"
+apt-get -y install php8.4-fpm php8.4-cli
+echo "\e[47m\e[31mInstalling PHP 8.4...\e[0m"
+apt-get -y install php8.4
+echo "\e[47m\e[31mInstalling PHP 8.4 Extensions...\e[0m"
+apt-get -y install php8.4-cgi php8.4-common php8.4-curl php8.4-mbstring php8.4-sqlite3 php8.4-xml php8.4-zip
 
-## Setup Composer
+## Setup Composer v2.8.8
 echo "\e[47m\e[31mInstalling composer...\e[0m"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Composer installer verified'; } else { echo 'Composer installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
