@@ -15,6 +15,7 @@ This script is not intended to be used in production.
 
 ## Supported OS
 - Debian 12
+- Linux Mint Debian Edition (LMDE Faye)
 
 ## Installation Overview
 Run the script as `root` or with `sudo`. 
