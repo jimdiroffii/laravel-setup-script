@@ -17,11 +17,20 @@ apt-get -y upgrade
 echo "\e[47m\e[31mInstalling prereqs and tools...\e[0m"
 apt-get -y install git lsb-release ca-certificates curl gnupg2 debian-archive-keyring tmux vim wget unzip tree net-tools ufw htop rsync jq openssl
 
+## Source the version codename (needed for debian-based varients, such as LMDE)
+. /etc/os-release
+
+if [ -n "$DEBIAN_CODENAME" ]; then
+	debian_codename="$DEBIAN_CODENAME"
+else
+	debian_codename=$(lsb_release -sc)
+fi
+
 ## Setup PHP Repo
 echo "\e[47m\e[31mInstall PHP source repository...\e[0m"
 curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb
 dpkg -i /tmp/debsuryorg-archive-keyring.deb
-sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ ${debian_codename} main" > /etc/apt/sources.list.d/php.list
 apt-get update
 
 ## Install PHP and Extensions
