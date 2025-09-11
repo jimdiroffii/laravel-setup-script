@@ -1,5 +1,6 @@
 # laravel-setup-script
-Scripts for setting up a Laravel Linux server. 
+
+Scripts for setting up a Laravel Linux server.
 
 The core idea is to be able to quickly and reliably establish a baseline configuration for Laravel development on a freshly installed Linux server. The currently supported server installation is Debian 12 (bookworm).
 
@@ -7,20 +8,22 @@ No extra database will be installed. Laravel comes with a `sqlite` file preinsta
 
 Several tools will be installed, some as prerequisites for packages such as PHP, and others just because they are useful.
 
-You may need to install and setup `sudo` first, along with any other user profile settings, such as SSH keys. 
+You may need to install and setup `sudo` first, along with any other user profile settings, such as SSH keys.
 
-There are other Laravel-supported options for development setup, such as [Herd](https://laravel.com/docs/11.x#local-installation-using-herd) (Win/Mac) or [Sail](https://laravel.com/docs/11.x#docker-installation-using-sail) (Docker). [Forge](https://forge.laravel.com/) can be used for the production environment. 
+There are other Laravel-supported options for development setup, such as [Herd](https://laravel.com/docs/11.x#local-installation-using-herd) (Win/Mac) or [Sail](https://laravel.com/docs/11.x#docker-installation-using-sail) (Docker). [Forge](https://forge.laravel.com/) can be used for the production environment.
 
-This script is not intended to be used in production. 
+This script is not intended to be used in production.
 
 ## Supported OS
+
 - Debian 12
 - Linux Mint Debian Edition (LMDE Faye)
 
 ## Installation Overview
-Run the script as `root` or with `sudo`. 
 
-If you run the script logged in as `root`, you'll need to update the Composer keys to your user's home folder or by running `composer self-update --update-keys` as your user. When running with `sudo`, the keys are updated into your user's home folder. 
+Run the script as `root` or with `sudo`.
+
+If you run the script logged in as `root`, you'll need to update the Composer keys to your user's home folder or by running `composer self-update --update-keys` as your user. When running with `sudo`, the keys are updated into your user's home folder.
 
 The script will install the following:
 
@@ -32,12 +35,13 @@ The script will install the following:
 - nvm, nodejs 22 and npm
 
 ## Post Install
+
 Run `php -v`.
 Run `composer diagnose` to check for any issues.
 
-Install or clone a laravel app. 
+Install or clone a laravel app.
 
-To install a fresh app: 
+To install a fresh app:
 
 ```bash
 composer create-project laravel/laravel test_example
@@ -57,12 +61,14 @@ ps -ef | grep server.php
 ```
 
 Output:
+
 ```bash
 user    29099   29097  2 19:29 pts/0    00:00:00 /usr/bin/php8.3 -S 0.0.0.0:8000 /srv/test/test_example/vendor/laravel/framework/src/Illuminate/Foundation/Console/../resources/server.php
 user    29101     972  0 19:29 pts/0    00:00:00 grep --color=auto server.php
 ```
 
 Kill:
+
 ```bash
 kill 29097
 ```
