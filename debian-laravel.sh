@@ -3,6 +3,10 @@
 # laravel-setup-script
 # https://github.com/jimdiroffii/laravel-setup-script
 
+# Set PHP version variable
+PHP_VERSION=8.4
+NODE_VERSION=22
+
 # Check for root
 if [ "$(id -u)" -ne 0 ]; then
     echo "Please rerun this script as root or sudo"
@@ -37,12 +41,12 @@ apt-get update
 # FPM and CLI are installed first to remove Apache dependency
 # Thanks https://askubuntu.com/users/583418/dan-delaney
 # https://askubuntu.com/a/1357414
-echo "\e[47m\e[31mInstalling PHP 8.4 FPM and CLI...\e[0m"
-apt-get -y install php8.4-fpm php8.4-cli
-echo "\e[47m\e[31mInstalling PHP 8.4...\e[0m"
-apt-get -y install php8.4
-echo "\e[47m\e[31mInstalling PHP 8.4 Extensions...\e[0m"
-apt-get -y install php8.4-cgi php8.4-common php8.4-curl php8.4-mbstring php8.4-sqlite3 php8.4-xml php8.4-zip
+echo "\e[47m\e[31mInstalling PHP $PHP_VERSION FPM and CLI...\e[0m"
+apt-get -y install php$PHP_VERSION-fpm php$PHP_VERSION-cli
+echo "\e[47m\e[31mInstalling PHP $PHP_VERSION...\e[0m"
+apt-get -y install php$PHP_VERSION
+echo "\e[47m\e[31mInstalling PHP $PHP_VERSION Extensions...\e[0m"
+apt-get -y install php$PHP_VERSION-cgi php$PHP_VERSION-common php$PHP_VERSION-curl php$PHP_VERSION-mbstring php$PHP_VERSION-sqlite3 php$PHP_VERSION-xml php$PHP_VERSION-zip
 
 ## Setup Composer v2.8.8
 echo "\e[47m\e[31mInstalling composer...\e[0m"
@@ -76,14 +80,14 @@ chown -R "$USERNAME":"$USERNAME" "$KEY_DIR"
 
 ## Install nvm, node, npm as user
 echo "\e[47m\e[31mInstalling nvm, node and npm...\e[0m"
-sudo -u $USERNAME bash <<'EOF'
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+sudo -u $USERNAME bash <<EOF
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="\$HOME/.nvm"
+[ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "\$NVM_DIR/bash_completion" ] && . "\$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-nvm install 22
+nvm install $NODE_VERSION
 
 node -v
 npm -v
