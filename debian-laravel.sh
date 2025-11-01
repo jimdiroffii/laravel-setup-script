@@ -48,10 +48,10 @@ apt-get -y install php$PHP_VERSION
 echo "\e[47m\e[31mInstalling PHP $PHP_VERSION Extensions...\e[0m"
 apt-get -y install php$PHP_VERSION-cgi php$PHP_VERSION-common php$PHP_VERSION-curl php$PHP_VERSION-mbstring php$PHP_VERSION-sqlite3 php$PHP_VERSION-xml php$PHP_VERSION-zip
 
-## Setup Composer v2.8.8
+## Setup Composer v2.8.12
 echo "\e[47m\e[31mInstalling composer...\e[0m"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Composer installer verified'; } else { echo 'Composer installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52bcfe4ecfbee5f727afa458b2573b8eaaf77b3419b0bf2768dc67c86944da1544f06fa544fd47') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
 sudo php composer-setup.php --install-dir=/usr/local/bin/ --filename=composer
 php -r "unlink('composer-setup.php');"
 
