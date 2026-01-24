@@ -28,11 +28,11 @@ If you run the script logged in as `root`, you'll need to update the Composer ke
 The script will install the following:
 
 - Prereqs and tools: `git`, `lsb-release`, `ca-certificates`, `curl`, `gnupg2`, `debian-archive-keyring`, `tmux`, `vim`, `wget`, `unzip`, `tree`, `net-tools`, `ufw`, `htop`, `rsync`, `jq`
-- Latest (8.4) PHP using [sury.org](https://deb.sury.org/) sources
+- Latest (8.5) PHP using [sury.org](https://deb.sury.org/) sources
 - PHP Extensions (some are preinstalled with core PHP, others are manual) - ctype, curl, dom, fileinfo, filter, hash, mbstring, openssl, pcre, pdo, session, tokenizer, xml, zip
 - Composer from [getcomposer.org](https://getcomposer.org/download/)
 - Composer public keys into `~/.config/composer/`
-- nvm, nodejs 22 and npm
+- nvm, nodejs 24 and npm
 
 ## Post Install
 
