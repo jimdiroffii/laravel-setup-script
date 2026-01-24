@@ -4,8 +4,8 @@
 # https://github.com/jimdiroffii/laravel-setup-script
 
 # Set PHP version variable
-PHP_VERSION=8.4
-NODE_VERSION=22
+PHP_VERSION=8.5
+NODE_VERSION=24
 
 # Check for root
 if [ "$(id -u)" -ne 0 ]; then
