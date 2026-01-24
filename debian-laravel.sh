@@ -92,3 +92,9 @@ nvm install $NODE_VERSION
 node -v
 npm -v
 EOF
+
+## Finish Installation
+echo "\e[47m\e[31mInstallation of prerequisites complete...\e[0m"
+echo "Run \e[30;42mcomposer diagnose\e[0m and check for any errors or missing components"
+echo "Run \e[30;42mcomposer global require laravel/installer\e[0m to finish installation"
+echo "Run \e[30;42mlaravel new example-app\e[0m to create a new application"
